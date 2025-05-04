@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app.js';
+import './index.css';
 
 // React 18 이상에서는 createRoot를 사용합니다.
 const root = ReactDOM.createRoot(document.getElementById('root'));
