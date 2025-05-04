@@ -2,34 +2,17 @@
   "name": "LGLIFECARE",
   "version": "1.0.0",
   "description": "LG 라이프케어 React 서비스",
-  "main": "LG-/src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Actionich/LG-.git"
-  },
-  "keywords": [
-    "react",
-    "LG",
-    "lifecare"
-  ],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/Actionich/LG-/issues"
-  },
-  "homepage": "https://github.com/Actionich/LG-#readme",
   "dependencies": {
     "lucide-react": "^0.507.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^5.0.1"
   },
   "browserslist": [
     ">0.2%",
@@ -37,9 +20,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.5",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.5"
+    "tailwindcss": "^3.3.3"
   }
 }

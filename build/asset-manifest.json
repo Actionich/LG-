@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/Actionich/LG-/static/css/main.db683005.chunk.css",
-    "main.js": "/Actionich/LG-/static/js/main.12929736.chunk.js",
-    "main.js.map": "/Actionich/LG-/static/js/main.12929736.chunk.js.map",
-    "runtime~main.js": "/Actionich/LG-/static/js/runtime~main.b52c5270.js",
-    "runtime~main.js.map": "/Actionich/LG-/static/js/runtime~main.b52c5270.js.map",
-    "static/js/2.73d29321.chunk.js": "/Actionich/LG-/static/js/2.73d29321.chunk.js",
-    "static/js/2.73d29321.chunk.js.map": "/Actionich/LG-/static/js/2.73d29321.chunk.js.map",
-    "index.html": "/Actionich/LG-/index.html",
-    "precache-manifest.455a2d96daf7a26862bad15c059a766b.js": "/Actionich/LG-/precache-manifest.455a2d96daf7a26862bad15c059a766b.js",
-    "service-worker.js": "/Actionich/LG-/service-worker.js",
-    "static/css/main.db683005.chunk.css.map": "/Actionich/LG-/static/css/main.db683005.chunk.css.map"
-  }
+    "main.css": "/static/css/main.466f4796.css",
+    "main.js": "/static/js/main.7c5f6877.js",
+    "index.html": "/index.html",
+    "main.466f4796.css.map": "/static/css/main.466f4796.css.map",
+    "main.7c5f6877.js.map": "/static/js/main.7c5f6877.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.466f4796.css",
+    "static/js/main.7c5f6877.js"
+  ]
 }
