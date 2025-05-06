@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle, Users, Gift, Star, Settings, Heart } from 'lucide-react';
 
-// LG 라이프케어 서비스 소개 랜딩페이지 컴포넌트
+// LG 라이프케어 서비스 소개 랜딩페이지 컴포넌트 (모바일/PC 반응형 최적화)
 const LGLifecareServiceSite = () => {
   // 상태 관리: 메뉴, 스크롤, 통계 애니메이션
   const [activeTab, setActiveTab] = useState('overview');
@@ -49,7 +49,6 @@ const LGLifecareServiceSite = () => {
             {/* 데스크탑 네비게이션 */}
             <nav className="hidden md:flex space-x-6 lg:space-x-10">
               <a href="#overview" onClick={() => setActiveTab('overview')} className={`font-semibold transition-colors ${activeTab === 'overview' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>서비스 개요</a>
-              <a href="#benefits" onClick={() => setActiveTab('benefits')} className={`font-semibold transition-colors ${activeTab === 'benefits' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>프리미엄 혜택</a>
               <a href="#platform" onClick={() => setActiveTab('platform')} className={`font-semibold transition-colors ${activeTab === 'platform' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>통합 복지몰</a>
               <a href="#cases" onClick={() => setActiveTab('cases')} className={`font-semibold transition-colors ${activeTab === 'cases' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>고객 사례</a>
               <a href="#contacts" onClick={() => setActiveTab('contacts')} className={`font-semibold transition-colors ${activeTab === 'contacts' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>도입 문의</a>
@@ -71,7 +70,6 @@ const LGLifecareServiceSite = () => {
             <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg py-4 z-50 rounded-b-xl animate-fadeIn">
               <div className="flex flex-col space-y-3 px-4">
                 <a href="#overview" onClick={() => {setActiveTab('overview'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'overview' ? 'text-blue-700' : 'text-gray-600'}`}>서비스 개요</a>
-                <a href="#benefits" onClick={() => {setActiveTab('benefits'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'benefits' ? 'text-blue-700' : 'text-gray-600'}`}>프리미엄 혜택</a>
                 <a href="#platform" onClick={() => {setActiveTab('platform'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'platform' ? 'text-blue-700' : 'text-gray-600'}`}>통합 복지몰</a>
                 <a href="#cases" onClick={() => {setActiveTab('cases'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'cases' ? 'text-blue-700' : 'text-gray-600'}`}>고객 사례</a>
                 <a href="#contacts" onClick={() => {setActiveTab('contacts'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'contacts' ? 'text-blue-700' : 'text-gray-600'}`}>도입 문의</a>
@@ -261,4 +259,3 @@ const LGLifecareServiceSite = () => {
 };
 
 export default LGLifecareServiceSite; 
-// ... 기존 코드 끝 ...
