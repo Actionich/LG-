@@ -2,7 +2,7 @@
 // App 컴포넌트를 불러와서 브라우저에 렌더링합니다.
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './app.js';
+import App from './app';
 import './index.css';
 
 // React 18 이상에서는 createRoot를 사용합니다.
