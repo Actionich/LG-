@@ -229,7 +229,7 @@ const LGLifecareServiceSite = () => {
       </section>
 
       {/* 도입 문의(contacts) 섹션: 반응형 폼/설명, 고도화된 디자인 */}
-      <section id="contacts" className="py-14 md:py-20 bg-gradient-to-br from-purple-50 via-white to-purple-100">
+      <section id="contacts" className="py-14 md:py-20 bg-gradient-to-br from-purple-200 via-purple-100 to-purple-50">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
           {/* 왼쪽: 설명 + 이미지 */}
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
@@ -239,11 +239,11 @@ const LGLifecareServiceSite = () => {
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-lg">
               복지 플랫폼의 한계를 뛰어넘는 AX 기반의 차세대 임직원 경험을 지금 바로 체험해보세요.<br />전문 컨설턴트가 귀사에 최적화된 솔루션을 제안해 드립니다.
             </p>
-            {/* 예시 이미지: 실제 배포 시 public/images/contact_illustration.png 등으로 교체 */}
-            <img src="/images/contact_illustration.png" alt="상담 및 컨설팅 일러스트" className="w-60 h-40 object-contain rounded-2xl shadow-lg border-2 border-purple-100 mb-4" />
+            {/* www.lglifecare.com 대표 이미지 활용, 오류 시 대체 */}
+            <img src="/images/www_lglifecare_com.png" alt="LG 라이프케어 대표 이미지" className="w-60 h-40 object-contain rounded-2xl shadow-lg border-2 border-purple-200 mb-4" onError={e => {e.target.onerror=null; e.target.src='/images/contact_illustration.png';}} />
           </div>
-          {/* 오른쪽: 입력 폼 */}
-          <form className="w-full md:w-1/2 bg-white/90 rounded-2xl shadow-2xl p-8 flex flex-col gap-6 border-2 border-purple-100 max-w-lg mx-auto">
+          {/* 오른쪽: 입력 폼 - 전화번호, 직급 등 필드 추가 */}
+          <form className="w-full md:w-1/2 bg-white/95 rounded-2xl shadow-2xl p-8 flex flex-col gap-6 border-2 border-purple-200 max-w-lg mx-auto">
             {/* 이름 입력 */}
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="font-semibold text-gray-800 text-lg">이름</label>
@@ -259,13 +259,23 @@ const LGLifecareServiceSite = () => {
               <label htmlFor="company" className="font-semibold text-gray-800 text-lg">회사명</label>
               <input id="company" name="company" type="text" required placeholder="회사명을 입력하세요" aria-label="회사명" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
             </div>
+            {/* 전화번호 입력 */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="phone" className="font-semibold text-gray-800 text-lg">전화번호</label>
+              <input id="phone" name="phone" type="tel" required placeholder="전화번호 (예: 010-1234-5678)" aria-label="전화번호" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
+            </div>
+            {/* 직급 입력 */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="position" className="font-semibold text-gray-800 text-lg">직급/직책</label>
+              <input id="position" name="position" type="text" placeholder="직급 또는 직책" aria-label="직급" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
+            </div>
             {/* 문의 내용 입력 */}
             <div className="flex flex-col gap-2">
               <label htmlFor="message" className="font-semibold text-gray-800 text-lg">문의 내용</label>
               <textarea id="message" name="message" required placeholder="문의하실 내용을 입력하세요" aria-label="문의 내용" rows={4} className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none resize-none" />
             </div>
             {/* 전송 버튼 */}
-            <button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-purple-400 text-white font-bold text-xl py-4 rounded-xl shadow-lg hover:from-purple-700 hover:to-purple-500 transition-all">
+            <button type="submit" className="w-full bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400 text-white font-bold text-xl py-4 rounded-xl shadow-lg hover:from-purple-800 hover:to-purple-500 transition-all">
               문의 보내기
             </button>
           </form>
