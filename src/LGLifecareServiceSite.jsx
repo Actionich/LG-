@@ -38,24 +38,25 @@ const LGLifecareServiceSite = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* 헤더: 반응형 네비게이션 및 서비스명 */}
-      <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    // 전체 배경: 옅은 보라색 그라데이션 적용
+    <div className="bg-gradient-to-br from-purple-100 via-purple-50 to-white min-h-screen">
+      {/* 헤더: 반응형 네비게이션 및 서비스명, 보라색 강조 */}
+      <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 shadow-md py-2' : 'bg-transparent py-4'}`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-tight">LG 라이프케어</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-purple-700 tracking-tight">LG 라이프케어</div>
             </div>
             {/* 데스크탑 네비게이션 */}
-            <nav className="hidden md:flex space-x-6 lg:space-x-10">
-              <a href="#overview" onClick={() => setActiveTab('overview')} className={`font-semibold transition-colors ${activeTab === 'overview' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>서비스 개요</a>
-              <a href="#platform" onClick={() => setActiveTab('platform')} className={`font-semibold transition-colors ${activeTab === 'platform' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>통합 복지몰</a>
-              <a href="#cases" onClick={() => setActiveTab('cases')} className={`font-semibold transition-colors ${activeTab === 'cases' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>고객 사례</a>
-              <a href="#contacts" onClick={() => setActiveTab('contacts')} className={`font-semibold transition-colors ${activeTab === 'contacts' ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700'}`}>도입 문의</a>
+            <nav className="hidden md:flex space-x-6 lg:space-x-10" aria-label="주요 메뉴">
+              <a href="#overview" onClick={() => setActiveTab('overview')} className={`font-semibold transition-colors ${activeTab === 'overview' ? 'text-purple-700' : 'text-gray-600 hover:text-purple-700'}`}>서비스 개요</a>
+              <a href="#platform" onClick={() => setActiveTab('platform')} className={`font-semibold transition-colors ${activeTab === 'platform' ? 'text-purple-700' : 'text-gray-600 hover:text-purple-700'}`}>통합 복지몰</a>
+              <a href="#cases" onClick={() => setActiveTab('cases')} className={`font-semibold transition-colors ${activeTab === 'cases' ? 'text-purple-700' : 'text-gray-600 hover:text-purple-700'}`}>고객 사례</a>
+              <a href="#contacts" onClick={() => setActiveTab('contacts')} className={`font-semibold transition-colors ${activeTab === 'contacts' ? 'text-purple-700' : 'text-gray-600 hover:text-purple-700'}`}>도입 문의</a>
             </nav>
             {/* 모바일 메뉴 버튼 */}
             <button className="md:hidden" onClick={toggleMenu} aria-label="모바일 메뉴 열기">
-              <svg className="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-8 h-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {isMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                 ) : (
@@ -63,50 +64,52 @@ const LGLifecareServiceSite = () => {
                 )}
               </svg>
             </button>
-            <button className="hidden md:block bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors shadow">체험하기</button>
+            {/* 헤더의 체험하기 버튼: 외부 링크 연결 */}
+            <a href="https://lgnara.lglifecare.com" target="_blank" rel="noopener noreferrer" className="hidden md:block bg-purple-700 text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-purple-800 transition-colors shadow-lg" aria-label="체험하기(새 창)">체험하기</a>
           </div>
           {/* 모바일 네비게이션 */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg py-4 z-50 rounded-b-xl animate-fadeIn">
-              <div className="flex flex-col space-y-3 px-4">
-                <a href="#overview" onClick={() => {setActiveTab('overview'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'overview' ? 'text-blue-700' : 'text-gray-600'}`}>서비스 개요</a>
-                <a href="#platform" onClick={() => {setActiveTab('platform'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'platform' ? 'text-blue-700' : 'text-gray-600'}`}>통합 복지몰</a>
-                <a href="#cases" onClick={() => {setActiveTab('cases'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'cases' ? 'text-blue-700' : 'text-gray-600'}`}>고객 사례</a>
-                <a href="#contacts" onClick={() => {setActiveTab('contacts'); setIsMenuOpen(false);}} className={`font-semibold ${activeTab === 'contacts' ? 'text-blue-700' : 'text-gray-600'}`}>도입 문의</a>
+            <div className="md:hidden absolute top-16 left-0 right-0 bg-white/90 shadow-lg py-4 z-50 rounded-b-xl animate-fadeIn">
+              <div className="flex flex-col space-y-4 px-4">
+                <a href="#overview" onClick={() => {setActiveTab('overview'); setIsMenuOpen(false);}} className={`font-semibold text-lg ${activeTab === 'overview' ? 'text-purple-700' : 'text-gray-600'}`}>서비스 개요</a>
+                <a href="#platform" onClick={() => {setActiveTab('platform'); setIsMenuOpen(false);}} className={`font-semibold text-lg ${activeTab === 'platform' ? 'text-purple-700' : 'text-gray-600'}`}>통합 복지몰</a>
+                <a href="#cases" onClick={() => {setActiveTab('cases'); setIsMenuOpen(false);}} className={`font-semibold text-lg ${activeTab === 'cases' ? 'text-purple-700' : 'text-gray-600'}`}>고객 사례</a>
+                <a href="#contacts" onClick={() => {setActiveTab('contacts'); setIsMenuOpen(false);}} className={`font-semibold text-lg ${activeTab === 'contacts' ? 'text-purple-700' : 'text-gray-600'}`}>도입 문의</a>
               </div>
             </div>
           )}
         </div>
       </header>
 
-      {/* Hero 섹션: 반응형 메시지/버튼/이미지, 모바일 최적화 */}
-      <section className="pt-24 pb-10 sm:pt-32 sm:pb-16 bg-gradient-to-br from-blue-100 via-indigo-100 to-white">
+      {/* Hero 섹션: 보라색 그라데이션, 큼직한 모바일 UI */}
+      <section className="pt-24 pb-10 sm:pt-32 sm:pb-16 bg-gradient-to-br from-purple-200 via-purple-50 to-white">
         <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-10">
           {/* 왼쪽: 메시지/버튼 */}
           <div className="w-full md:w-1/2 text-center md:text-left flex flex-col items-center md:items-start">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight drop-shadow-sm">
-              <span className="text-blue-700">LG 라이프케어</span>로<br />임직원 복지의 <span className="text-indigo-500">새로운 기준</span>을 만나다
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight drop-shadow-sm">
+              <span className="text-purple-700">LG 라이프케어</span>로<br />임직원 복지의 <span className="text-purple-400">새로운 기준</span>을 만나다
             </h1>
-            <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 max-w-md md:max-w-none">
+            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl text-gray-700 mb-10 max-w-md md:max-w-none">
               국내 유일의 통합 복지몰, AI 기반 맞춤형 혜택, 자동화된 복지 서비스까지<br />한 번에 경험하세요.
             </p>
-            <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 w-full max-w-xs md:max-w-none">
-              <button className="w-full xs:w-auto bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-blue-800 transition-colors flex items-center justify-center">
+            <div className="flex flex-col xs:flex-row gap-4 xs:gap-6 w-full max-w-xs md:max-w-none">
+              <button className="w-full xs:w-auto bg-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-purple-800 transition-colors flex items-center justify-center">
                 서비스 소개서 다운로드
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-3 h-6 w-6" />
               </button>
-              <button className="w-full xs:w-auto border-2 border-blue-700 text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-sm">
+              <a href="https://lgnara.lglifecare.com" target="_blank" rel="noopener noreferrer" className="w-full xs:w-auto border-2 border-purple-700 text-purple-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition-colors shadow-lg flex items-center justify-center" aria-label="데모 체험하기(새 창)">
                 데모 체험하기
-              </button>
+              </a>
             </div>
           </div>
           {/* 오른쪽: 이미지/대시보드 예시 */}
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg">
-              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-blue-100">
-                <img src="/api/placeholder/600/400" alt="LG 라이프케어 플랫폼 대시보드" className="w-full object-cover" />
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-purple-100">
+                {/* 실제 대시보드 샘플 이미지로 교체, public/images/dashboard_sample.png 등 */}
+                <img src="/images/dashboard_sample.png" alt="LG 라이프케어 플랫폼 대시보드 샘플" className="w-full object-cover" onError={e => {e.target.onerror=null; e.target.src='/images/contact_illustration.png';}} />
               </div>
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-blue-700 text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-lg">
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-purple-700 text-white px-6 py-3 rounded-xl text-base sm:text-lg font-bold shadow-lg">
                 국내 유일 통합 복지몰
               </div>
             </div>
@@ -114,14 +117,14 @@ const LGLifecareServiceSite = () => {
         </div>
       </section>
 
-      {/* 서비스 개요(overview) 섹션: 모바일 카드형 레이아웃 */}
-      <section id="overview" className="py-12 md:py-16">
+      {/* 서비스 개요(overview) 섹션: 카드형, 보라색 강조 */}
+      <section id="overview" className="py-14 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              <span className="text-blue-700">라이프케어를 선택하는 이유</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <span className="text-purple-700">라이프케어를 선택하는 이유</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
               라이프케어는 LG가 운영하는 국내 유일의 통합 복지몰로 유수의 대형 복지몰 및 폐쇄형 서비스를 통합 제공하고 기업문화와 임직원 DATA의 AI 분석을 통해 생애주기별 맞춤형 복지서비스를 최적의 혜택으로 제공합니다.
             </p>
           </div>
@@ -129,65 +132,65 @@ const LGLifecareServiceSite = () => {
         </div>
       </section>
 
-      {/* 프리미엄 혜택(benefits) 섹션: 카드형, 반응형 그리드 */}
-      <section id="benefits" className="py-12 md:py-16 bg-blue-50">
+      {/* 프리미엄 혜택(benefits) 섹션: 카드형, 보라색 강조 */}
+      <section id="benefits" className="py-14 md:py-20 bg-purple-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              <span className="text-blue-700">프리미엄 혜택</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <span className="text-purple-700">프리미엄 혜택</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
               LG 계열사 상품 및 서비스를 LG임직원 복지혜택과 동일하게 제공합니다.<br />국내 유일 통합 복지몰로 최다 상품 및 서비스를 보유하여 임직원 만족도와 기업 로열티를 증대시킵니다.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {/* 카드 예시 */}
-            <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow">
-              <Gift className="h-10 w-10 text-blue-600 mb-3" />
-              <div className="font-bold text-lg mb-2">LG 계열사 혜택</div>
-              <div className="text-gray-500 text-sm">LG 임직원과 동일한 복지 혜택 제공</div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+              <Gift className="h-12 w-12 text-purple-600 mb-4" />
+              <div className="font-bold text-xl mb-2">LG 계열사 혜택</div>
+              <div className="text-gray-500 text-base">LG 임직원과 동일한 복지 혜택 제공</div>
             </div>
-            <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow">
-              <Star className="h-10 w-10 text-yellow-400 mb-3" />
-              <div className="font-bold text-lg mb-2">프리미엄 상품</div>
-              <div className="text-gray-500 text-sm">최다 프리미엄 상품/서비스 보유</div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+              <Star className="h-12 w-12 text-yellow-400 mb-4" />
+              <div className="font-bold text-xl mb-2">프리미엄 상품</div>
+              <div className="text-gray-500 text-base">최다 프리미엄 상품/서비스 보유</div>
             </div>
-            <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow">
-              <Users className="h-10 w-10 text-indigo-500 mb-3" />
-              <div className="font-bold text-lg mb-2">맞춤형 복지</div>
-              <div className="text-gray-500 text-sm">AI 기반 임직원 맞춤형 혜택</div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+              <Users className="h-12 w-12 text-purple-400 mb-4" />
+              <div className="font-bold text-xl mb-2">맞춤형 복지</div>
+              <div className="text-gray-500 text-base">AI 기반 임직원 맞춤형 혜택</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 통합 복지몰(platform) 섹션: 카드형, 반응형 그리드 */}
-      <section id="platform" className="py-12 md:py-16 bg-gray-50">
+      {/* 통합 복지몰(platform) 섹션: 카드형, 보라색 강조 */}
+      <section id="platform" className="py-14 md:py-20 bg-purple-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              <span className="text-blue-700">국내 유일의 통합복지몰</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <span className="text-purple-700">국내 유일의 통합복지몰</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
               LG 계열사 프리미엄 혜택 + 대형 복지몰 + B2C 커머스 종합몰을 모두 통합한 국내 유일의 복지몰입니다.<br />상품 1억개, 최저가 상품 20만개 및 개인화 상품 추천 서비스를 제공합니다.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {/* 카드 예시 */}
-            <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow">
-              <Settings className="h-10 w-10 text-green-500 mb-3" />
-              <div className="font-bold text-lg mb-2">통합 플랫폼</div>
-              <div className="text-gray-500 text-sm">복지/커머스/추천 통합 제공</div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+              <Settings className="h-12 w-12 text-green-500 mb-4" />
+              <div className="font-bold text-xl mb-2">통합 플랫폼</div>
+              <div className="text-gray-500 text-base">복지/커머스/추천 통합 제공</div>
             </div>
-            <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow">
-              <CheckCircle className="h-10 w-10 text-blue-500 mb-3" />
-              <div className="font-bold text-lg mb-2">최다 상품</div>
-              <div className="text-gray-500 text-sm">1억개 상품, 20만개 최저가</div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+              <CheckCircle className="h-12 w-12 text-purple-500 mb-4" />
+              <div className="font-bold text-xl mb-2">최다 상품</div>
+              <div className="text-gray-500 text-base">1억개 상품, 20만개 최저가</div>
             </div>
-            <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow">
-              <Heart className="h-10 w-10 text-pink-500 mb-3" />
-              <div className="font-bold text-lg mb-2">개인화 추천</div>
-              <div className="text-gray-500 text-sm">AI 기반 맞춤형 상품 추천</div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-shadow">
+              <Heart className="h-12 w-12 text-pink-400 mb-4" />
+              <div className="font-bold text-xl mb-2">개인화 추천</div>
+              <div className="text-gray-500 text-base">AI 기반 맞춤형 상품 추천</div>
             </div>
           </div>
         </div>
@@ -225,18 +228,47 @@ const LGLifecareServiceSite = () => {
         </div>
       </section>
 
-      {/* 도입 문의(contacts) 섹션: 반응형 폼/설명 */}
-      <section id="contacts" className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              <span className="text-blue-700">도입 문의</span>
+      {/* 도입 문의(contacts) 섹션: 반응형 폼/설명, 고도화된 디자인 */}
+      <section id="contacts" className="py-14 md:py-20 bg-gradient-to-br from-purple-50 via-white to-purple-100">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+          {/* 왼쪽: 설명 + 이미지 */}
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <span className="text-purple-700">도입 문의</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-lg">
               복지 플랫폼의 한계를 뛰어넘는 AX 기반의 차세대 임직원 경험을 지금 바로 체험해보세요.<br />전문 컨설턴트가 귀사에 최적화된 솔루션을 제안해 드립니다.
             </p>
+            {/* 예시 이미지: 실제 배포 시 public/images/contact_illustration.png 등으로 교체 */}
+            <img src="/images/contact_illustration.png" alt="상담 및 컨설팅 일러스트" className="w-60 h-40 object-contain rounded-2xl shadow-lg border-2 border-purple-100 mb-4" />
           </div>
-          {/* 문의 폼 등 추가 가능 */}
+          {/* 오른쪽: 입력 폼 */}
+          <form className="w-full md:w-1/2 bg-white/90 rounded-2xl shadow-2xl p-8 flex flex-col gap-6 border-2 border-purple-100 max-w-lg mx-auto">
+            {/* 이름 입력 */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="font-semibold text-gray-800 text-lg">이름</label>
+              <input id="name" name="name" type="text" required placeholder="이름을 입력하세요" aria-label="이름" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
+            </div>
+            {/* 이메일 입력 */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="font-semibold text-gray-800 text-lg">이메일</label>
+              <input id="email" name="email" type="email" required placeholder="이메일 주소" aria-label="이메일" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
+            </div>
+            {/* 회사명 입력 */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="company" className="font-semibold text-gray-800 text-lg">회사명</label>
+              <input id="company" name="company" type="text" required placeholder="회사명을 입력하세요" aria-label="회사명" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
+            </div>
+            {/* 문의 내용 입력 */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="message" className="font-semibold text-gray-800 text-lg">문의 내용</label>
+              <textarea id="message" name="message" required placeholder="문의하실 내용을 입력하세요" aria-label="문의 내용" rows={4} className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none resize-none" />
+            </div>
+            {/* 전송 버튼 */}
+            <button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-purple-400 text-white font-bold text-xl py-4 rounded-xl shadow-lg hover:from-purple-700 hover:to-purple-500 transition-all">
+              문의 보내기
+            </button>
+          </form>
         </div>
       </section>
 
