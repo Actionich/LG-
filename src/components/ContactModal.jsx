@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 
 // 서비스 도입 문의 모달 컴포넌트
@@ -17,6 +17,29 @@ const ContactModal = ({ isOpen, onClose }) => {
     budget: '',
     timeline: ''
   });
+
+  // 포커스 트랩을 위한 ref
+  const modalRef = useRef(null);
+
+  // ESC 키로 모달 닫기
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+      // Tab 키 포커스 트랩
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   // 폼 입력값 변경 핸들러
   const handleChange = (e) => {
@@ -42,18 +65,27 @@ const ContactModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div
+      className="fixed inset-0 bg-gradient-to-br from-purple-300/60 via-white/60 to-purple-100/80 backdrop-blur-[2px] z-50 flex items-center justify-center p-4 animate-fadeIn"
+      aria-modal="true"
+      role="dialog"
+      aria-label="서비스 도입 문의 모달"
+    >
+      <div
+        className="bg-white/70 backdrop-blur-2xl rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border-2 border-purple-100 ring-2 ring-purple-200 focus:outline-none"
+        ref={modalRef}
+        tabIndex={-1}
+      >
         {/* 모달 헤더 */}
-        <div className="flex justify-between items-center p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">서비스 도입 문의</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-            <X className="w-6 h-6" />
+        <div className="flex justify-between items-center p-6 border-b border-gray-200 bg-white/60 rounded-t-3xl">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight" id="contact-modal-title">서비스 도입 문의</h2>
+          <button onClick={onClose} className="text-gray-500 hover:text-purple-700 transition-colors focus:ring-2 focus:ring-purple-200 rounded-full" aria-label="모달 닫기">
+            <X className="w-6 h-6" aria-hidden="true" />
           </button>
         </div>
 
         {/* 모달 본문 */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="p-6 space-y-6" aria-labelledby="contact-modal-title">
           {/* 기본 정보 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
@@ -65,7 +97,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner placeholder-gray-400 transition-all focus-visible:ring-4"
+                autoComplete="off"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -77,7 +110,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner placeholder-gray-400 transition-all focus-visible:ring-4"
+                autoComplete="off"
               />
             </div>
           </div>
@@ -93,7 +127,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.company}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner placeholder-gray-400 transition-all focus-visible:ring-4"
+                autoComplete="off"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -104,7 +139,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.companySize}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner transition-all focus-visible:ring-4"
+                aria-label="회사 규모 선택"
               >
                 <option value="">선택하세요</option>
                 <option value="1-50">1-50명</option>
@@ -126,7 +162,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.industry}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner transition-all focus-visible:ring-4"
+                aria-label="산업 분야 선택"
               >
                 <option value="">선택하세요</option>
                 <option value="manufacturing">제조업</option>
@@ -144,7 +181,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.currentWelfare}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner transition-all focus-visible:ring-4"
+                aria-label="현재 복지 현황 선택"
               >
                 <option value="">선택하세요</option>
                 <option value="none">복지 제도 없음</option>
@@ -165,7 +203,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.budget}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner transition-all focus-visible:ring-4"
+                aria-label="예상 예산 선택"
               >
                 <option value="">선택하세요</option>
                 <option value="under1m">1천만원 미만</option>
@@ -182,7 +221,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 required
                 value={formData.timeline}
                 onChange={handleChange}
-                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none"
+                className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none bg-white/80 shadow-inner transition-all focus-visible:ring-4"
+                aria-label="도입 희망 시기 선택"
               >
                 <option value="">선택하세요</option>
                 <option value="asap">즉시</option>
@@ -202,8 +242,9 @@ const ContactModal = ({ isOpen, onClose }) => {
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none resize-none"
+              className="px-4 py-3 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 outline-none resize-none bg-white/80 shadow-inner placeholder-gray-400 transition-all focus-visible:ring-4"
               placeholder="추가로 문의하실 내용이 있다면 작성해 주세요."
+              aria-label="추가 문의사항 입력"
             />
           </div>
 
@@ -211,7 +252,8 @@ const ContactModal = ({ isOpen, onClose }) => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400 text-white font-bold text-lg px-8 py-3 rounded-xl shadow-lg hover:from-purple-800 hover:to-purple-500 transition-all"
+              className="bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400 text-white font-bold text-lg px-8 py-3 rounded-2xl shadow-xl hover:scale-105 hover:from-purple-800 hover:to-purple-500 transition-all focus:ring-4 focus:ring-purple-200 focus-visible:outline-none"
+              aria-label="문의 제출"
             >
               문의하기
             </button>
