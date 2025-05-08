@@ -7,6 +7,27 @@
       { "source": "/logo512.png", "destination": "/logo512.png" },
       { "source": "/robots.txt", "destination": "/robots.txt" },
       { "source": "/asset-manifest.json", "destination": "/asset-manifest.json" },
+      { "source": "/images/(.*)", "destination": "/images/$1" },
       { "source": "/(.*)", "destination": "/index.html" }
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/static/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      }
     ]
   }

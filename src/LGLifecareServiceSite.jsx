@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle, Users, Gift, Star, Settings, Heart } from 'lucide-react';
+import ContactModal from './components/ContactModal';
 
 // LG 라이프케어 서비스 소개 랜딩페이지 컴포넌트 (모바일/PC 반응형 최적화)
 const LGLifecareServiceSite = () => {
-  // 상태 관리: 메뉴, 스크롤, 통계 애니메이션
+  // 상태 관리: 메뉴, 스크롤, 통계 애니메이션, 모달
   const [activeTab, setActiveTab] = useState('overview');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [stats, setStats] = useState({ companies: 0, employees: 0, products: 0, brands: 0 });
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   // 스크롤 감지 (헤더 스타일 변경)
   useEffect(() => {
@@ -228,7 +230,7 @@ const LGLifecareServiceSite = () => {
         </div>
       </section>
 
-      {/* 도입 문의(contacts) 섹션: 반응형 폼/설명, 고도화된 디자인 */}
+      {/* 도입 문의(contacts) 섹션: 모달 트리거 버튼으로 변경 */}
       <section id="contacts" className="py-14 md:py-20 bg-gradient-to-br from-purple-200 via-purple-100 to-purple-50">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
           {/* 왼쪽: 설명 + 이미지 */}
@@ -239,46 +241,17 @@ const LGLifecareServiceSite = () => {
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-lg">
               복지 플랫폼의 한계를 뛰어넘는 AX 기반의 차세대 임직원 경험을 지금 바로 체험해보세요.<br />전문 컨설턴트가 귀사에 최적화된 솔루션을 제안해 드립니다.
             </p>
-            {/* www.lglifecare.com 대표 이미지 활용, 오류 시 대체 */}
             <img src="/images/www_lglifecare_com.png" alt="LG 라이프케어 대표 이미지" className="w-60 h-40 object-contain rounded-2xl shadow-lg border-2 border-purple-200 mb-4" onError={e => {e.target.onerror=null; e.target.src='/images/contact_illustration.png';}} />
           </div>
-          {/* 오른쪽: 입력 폼 - 전화번호, 직급 등 필드 추가 */}
-          <form className="w-full md:w-1/2 bg-white/95 rounded-2xl shadow-2xl p-8 flex flex-col gap-6 border-2 border-purple-200 max-w-lg mx-auto">
-            {/* 이름 입력 */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="name" className="font-semibold text-gray-800 text-lg">이름</label>
-              <input id="name" name="name" type="text" required placeholder="이름을 입력하세요" aria-label="이름" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
-            </div>
-            {/* 이메일 입력 */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="font-semibold text-gray-800 text-lg">이메일</label>
-              <input id="email" name="email" type="email" required placeholder="이메일 주소" aria-label="이메일" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
-            </div>
-            {/* 회사명 입력 */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="company" className="font-semibold text-gray-800 text-lg">회사명</label>
-              <input id="company" name="company" type="text" required placeholder="회사명을 입력하세요" aria-label="회사명" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
-            </div>
-            {/* 전화번호 입력 */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="phone" className="font-semibold text-gray-800 text-lg">전화번호</label>
-              <input id="phone" name="phone" type="tel" required placeholder="전화번호 (예: 010-1234-5678)" aria-label="전화번호" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
-            </div>
-            {/* 직급 입력 */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="position" className="font-semibold text-gray-800 text-lg">직급/직책</label>
-              <input id="position" name="position" type="text" placeholder="직급 또는 직책" aria-label="직급" className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none" />
-            </div>
-            {/* 문의 내용 입력 */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="message" className="font-semibold text-gray-800 text-lg">문의 내용</label>
-              <textarea id="message" name="message" required placeholder="문의하실 내용을 입력하세요" aria-label="문의 내용" rows={4} className="px-5 py-4 rounded-xl border border-purple-200 focus:ring-2 focus:ring-purple-400 text-lg outline-none resize-none" />
-            </div>
-            {/* 전송 버튼 */}
-            <button type="submit" className="w-full bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400 text-white font-bold text-xl py-4 rounded-xl shadow-lg hover:from-purple-800 hover:to-purple-500 transition-all">
-              문의 보내기
+          {/* 오른쪽: 문의하기 버튼 */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="w-full max-w-lg bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400 text-white font-bold text-xl py-6 rounded-xl shadow-lg hover:from-purple-800 hover:to-purple-500 transition-all"
+            >
+              서비스 도입 문의하기
             </button>
-          </form>
+          </div>
         </div>
       </section>
 
@@ -296,6 +269,12 @@ const LGLifecareServiceSite = () => {
           </div>
         </div>
       </footer>
+
+      {/* 문의 모달 */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </div>
   );
 };
