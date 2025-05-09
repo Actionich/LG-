@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle, Users, Gift, Star, Settings, Heart } from 'lucide-react';
 import ContactModal from './components/ContactModal';
 import AuthModal from './components/AuthModal';
-import ProductList from './components/ProductList'; // 상품 리스트 컴포넌트
+// import ProductList from './components/ProductList'; // 상품 리스트 컴포넌트
 import ReviewList from './components/ReviewList'; // 고객 리뷰 리스트 컴포넌트 import
 
 // LG 라이프케어 서비스 소개 랜딩페이지 컴포넌트 (모바일/PC 반응형 최적화)
@@ -188,7 +188,7 @@ const LGLifecareServiceSite = () => {
         </div>
       </section>
       {/* 상품 리스트 섹션 추가 */}
-      <ProductList />
+      {/* <ProductList /> */}
 
       {/* 프리미엄 혜택(benefits) 섹션: 카드형, 보라색 강조 */}
       <section id="benefits" className="py-14 md:py-20 bg-purple-50">
