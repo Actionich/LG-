@@ -1,0 +1,31 @@
+# Task ID: 5
+# Title: Implement Newsletter Automation
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Automate the conversion of welfare plans into newsletters and distribute them to subscribers.
+# Details:
+Use Mailchimp/SMTP for email distribution. Develop a module to convert planning content into newsletter format and send to the subscriber database.
+
+# Test Strategy:
+Test email delivery to a test subscriber list. Verify the content format and delivery timing.
+
+# Subtasks:
+## 1. 이메일 서비스 환경 설정 [pending]
+### Dependencies: None
+### Description: 뉴스레터 발송을 위한 이메일 플랫폼(ConvertKit/Gmail API) 초기 설정
+### Details:
+API 키 발급 및 인증 → 템플릿 저장소 연결 → 발신자 정보 입력 [2][4]
+
+## 2. 콘텐츠 변환 로직 구현 [pending]
+### Dependencies: 5.1
+### Description: RSS 피드 데이터를 이메일 템플릿 형식으로 자동 변환
+### Details:
+ChatGPT API 연동 → 기사 요약 생성 → 마크다운 → HTML 변환 → 동적 변수 매핑 [2][4][5]
+
+## 3. 배포 테스트 자동화 [pending]
+### Dependencies: 5.1, 5.2
+### Description: A/B 테스트 환경 구축 및 스팸 필터링 검증
+### Details:
+테스트 그룹 분할 → 개봉률 추적 설정 → 스팸 점수 검사 → 대체 텍스트 버전 생성 [1][3]
+

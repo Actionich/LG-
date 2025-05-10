@@ -1,0 +1,11 @@
+# Task ID: 1
+# Title: Setup Project Repository
+# Status: done
+# Dependencies: None
+# Priority: medium
+# Description: Initialize the project repository for the AX-based welfare information service.
+# Details:
+Create a new repository on GitHub or GitLab. Set up the initial project structure with directories for frontend, backend, and documentation. Initialize with a README file and a .gitignore file for Node.js projects.
+
+# Test Strategy:
+Verify that the repository is accessible and the initial structure is correctly set up.

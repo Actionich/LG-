@@ -1,0 +1,11 @@
+# Task ID: 2
+# Title: Prepare Data and Infrastructure
+# Status: in-progress
+# Dependencies: None
+# Priority: medium
+# Description: Set up the necessary databases and infrastructure for the service.
+# Details:
+Use Google Cloud to set up databases for products, users, subscribers, and B2B inquiries. Configure Vercel/Netlify for hosting the public web components. Set up n8n server for workflow automation.
+
+# Test Strategy:
+Ensure all databases are accessible and correctly configured. Verify hosting setup by deploying a simple test page.

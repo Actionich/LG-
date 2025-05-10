@@ -1,0 +1,37 @@
+# Task ID: 6
+# Title: Develop B2B Inquiry and Proposal System
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Create a system for handling B2B inquiries and generating automated proposals.
+# Details:
+Implement an InquiryForm component for B2B users to submit inquiries. Use PDFKit/Puppeteer to generate proposals and send them via email.
+
+# Test Strategy:
+Submit test inquiries and verify proposal generation and email delivery. Check for accuracy and completeness of proposals.
+
+# Subtasks:
+## 1. 문의 입력 폼 구현 및 유효성 검증 [pending]
+### Dependencies: None
+### Description: 사용자 친화적인 문의 입력 폼 개발과 데이터 정합성 보장
+### Details:
+React/Vue.js 기반 폼 UI 설계, 필수 입력 필드 검증 규칙 구현, 드롭다운/날짜 선택기 등 인터랙티브 컴포넌트 추가
+
+## 2. PDF 생성 엔진 구축 [pending]
+### Dependencies: 6.1
+### Description: 동적 데이터 기반 제안서 자동 생성 시스템 개발
+### Details:
+PDFLib/React-PDF 라이브러리 선정, 기업 로고/서명 영역 포함한 템플릿 제작, 다국어 지원 기능 구현
+
+## 3. 이메일 통합 시스템 연동 [pending]
+### Dependencies: 6.2
+### Description: 제안서 발송 및 수신 확인을 위한 이메일 자동화
+### Details:
+Nodemailer/SendGrid API 연동, 첨부파일 자동 추가 로직 개발, 개인화된 이메일 템플릿 관리 기능 구현
+
+## 4. 에러 핸들링 및 로깅 체계 구축 [pending]
+### Dependencies: 6.1, 6.2, 6.3
+### Description: 시스템 전반의 안정성 강화를 위한 오류 관리
+### Details:
+Try-Catch 블록 전략적 배치, Winston 모듈을 이용한 오류 로그 집계, 사용자 피드백을 위한 오류 코드 시스템 설계
+
