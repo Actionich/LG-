@@ -1,0 +1,351 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Setup Project Repository",
+      "description": "Initialize the project repository for the AX-based welfare information service.",
+      "details": "Create a new repository on GitHub or GitLab. Set up the initial project structure with directories for frontend, backend, and documentation. Initialize with a README file and a .gitignore file for Node.js projects.",
+      "testStrategy": "Verify that the repository is accessible and the initial structure is correctly set up.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "done",
+      "subtasks": []
+    },
+    {
+      "id": 2,
+      "title": "Prepare Data and Infrastructure",
+      "description": "Set up the necessary databases and infrastructure for the service.",
+      "details": "Use Google Cloud to set up databases for products, users, subscribers, and B2B inquiries. Configure Vercel/Netlify for hosting the public web components. Set up n8n server for workflow automation.",
+      "testStrategy": "Ensure all databases are accessible and correctly configured. Verify hosting setup by deploying a simple test page.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "in-progress",
+      "subtasks": []
+    },
+    {
+      "id": 3,
+      "title": "Develop Chatbot Widget",
+      "description": "Implement the AX-based chatbot for natural language Q&A and recommendations.",
+      "details": "Use GPT API for natural language processing and Pinecone for recommendation features. Implement the chatbot widget using JavaScript and integrate it into the public web interface.",
+      "testStrategy": "Test chatbot interactions for accuracy and response time. Validate integration with the web interface.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "NLP 통합 기본 설정",
+          "description": "사용자 입력 이해를 위한 자연어 처리 시스템 구축",
+          "dependencies": [],
+          "details": "1. AI API(예: GPT-3.5/4) 연결 설정\n2. 의도 분류 모델 구현\n3. 개체 인식(Entity Recognition) 파이프라인 구성\n4. 기본 대화 흐름 템플릿 제작",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "추천 엔진 코어 개발",
+          "description": "벡터 DB 기반 상황 인식 추천 시스템 구현",
+          "dependencies": [
+            1
+          ],
+          "details": "1. 사용자 프로파일 벡터화\n2. 유사도 검색 알고리즘 구현(Cosine/유클리드)\n3. 실시간 쿼리 최적화\n4. 추천 결과 필터링 로직 추가",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "대화형 위젯 프론트엔드",
+          "description": "반응형 UI 컴포넌트 개발",
+          "dependencies": [
+            1,
+            2
+          ],
+          "details": "1. 채팅 인터페이스 디자인 시스템 구축\n2. 실시간 데이터 바인딩 구현\n3. 애니메이션 상호작용 추가\n4. 크로스 플랫폼 호환성 테스트",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "시스템 통합 검증",
+          "description": "엔드투엔드 통합 테스트 및 최적화",
+          "dependencies": [
+            1,
+            2,
+            3
+          ],
+          "details": "1. 성능 벤치마크(초당 요청 처리량 측정)\n2. 지연 시간 최적화\n3. 오류 처리 메커니즘 강화\n4. 사용자 검증 테스트 진행",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Automate Welfare Planning",
+      "description": "Create a system for automatic welfare planning based on seasons and trends.",
+      "details": "Develop a CMS module to generate content automatically. Integrate with external APIs to fetch trend data and use it to generate planning content.",
+      "testStrategy": "Validate content generation against expected seasonal and trend-based outputs. Ensure CMS integration is seamless.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "외부 API 연동 시스템 구축",
+          "description": "복지 데이터 자동 수집을 위한 외부 API 연결 인프라 구성",
+          "dependencies": [],
+          "details": "정부 복지 API(공공데이터포털)와의 안정적인 연결 설정 > API 키 관리 시스템 구현 > 데이터 형식 표준화(JSON/XML 파싱)",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "콘텐츠 자동 생성 로직 개발",
+          "description": "수집 데이터 기반 자동화된 기획전 페이지 생성 시스템 구현",
+          "dependencies": [
+            1
+          ],
+          "details": "Mustache 템플릿 엔진 적용 > 조건부 콘텐츠 배치 규칙 설정(연령대/지역별 필터링) > 미리보기 기능 추가",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "실시간 유효성 검증 모듈 추가",
+          "description": "생성 콘텐츠의 정확성 보장을 위한 자동 검증 시스템 구축",
+          "dependencies": [
+            2
+          ],
+          "details": "중복 데이터 체크 알고리즘 구현 > 법적 요건 준수 검증(복지법 기준) > 자동 수정 제안 시스템 개발",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Implement Newsletter Automation",
+      "description": "Automate the conversion of welfare plans into newsletters and distribute them to subscribers.",
+      "details": "Use Mailchimp/SMTP for email distribution. Develop a module to convert planning content into newsletter format and send to the subscriber database.",
+      "testStrategy": "Test email delivery to a test subscriber list. Verify the content format and delivery timing.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "이메일 서비스 환경 설정",
+          "description": "뉴스레터 발송을 위한 이메일 플랫폼(ConvertKit/Gmail API) 초기 설정",
+          "dependencies": [],
+          "details": "API 키 발급 및 인증 → 템플릿 저장소 연결 → 발신자 정보 입력 [2][4]",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "콘텐츠 변환 로직 구현",
+          "description": "RSS 피드 데이터를 이메일 템플릿 형식으로 자동 변환",
+          "dependencies": [
+            1
+          ],
+          "details": "ChatGPT API 연동 → 기사 요약 생성 → 마크다운 → HTML 변환 → 동적 변수 매핑 [2][4][5]",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "배포 테스트 자동화",
+          "description": "A/B 테스트 환경 구축 및 스팸 필터링 검증",
+          "dependencies": [
+            1,
+            2
+          ],
+          "details": "테스트 그룹 분할 → 개봉률 추적 설정 → 스팸 점수 검사 → 대체 텍스트 버전 생성 [1][3]",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Develop B2B Inquiry and Proposal System",
+      "description": "Create a system for handling B2B inquiries and generating automated proposals.",
+      "details": "Implement an InquiryForm component for B2B users to submit inquiries. Use PDFKit/Puppeteer to generate proposals and send them via email.",
+      "testStrategy": "Submit test inquiries and verify proposal generation and email delivery. Check for accuracy and completeness of proposals.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "문의 입력 폼 구현 및 유효성 검증",
+          "description": "사용자 친화적인 문의 입력 폼 개발과 데이터 정합성 보장",
+          "dependencies": [],
+          "details": "React/Vue.js 기반 폼 UI 설계, 필수 입력 필드 검증 규칙 구현, 드롭다운/날짜 선택기 등 인터랙티브 컴포넌트 추가",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "PDF 생성 엔진 구축",
+          "description": "동적 데이터 기반 제안서 자동 생성 시스템 개발",
+          "dependencies": [
+            1
+          ],
+          "details": "PDFLib/React-PDF 라이브러리 선정, 기업 로고/서명 영역 포함한 템플릿 제작, 다국어 지원 기능 구현",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "이메일 통합 시스템 연동",
+          "description": "제안서 발송 및 수신 확인을 위한 이메일 자동화",
+          "dependencies": [
+            2
+          ],
+          "details": "Nodemailer/SendGrid API 연동, 첨부파일 자동 추가 로직 개발, 개인화된 이메일 템플릿 관리 기능 구현",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "에러 핸들링 및 로깅 체계 구축",
+          "description": "시스템 전반의 안정성 강화를 위한 오류 관리",
+          "dependencies": [
+            1,
+            2,
+            3
+          ],
+          "details": "Try-Catch 블록 전략적 배치, Winston 모듈을 이용한 오류 로그 집계, 사용자 피드백을 위한 오류 코드 시스템 설계",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Integrate External Services and Automation",
+      "description": "Integrate external services and automate workflows using n8n.",
+      "details": "Set up workflows in n8n to automate tasks such as data synchronization and notification sending. Integrate Slack for team notifications and Webhooks for real-time updates.",
+      "testStrategy": "Test each workflow for correct execution and error handling. Validate Slack notifications and Webhook responses.",
+      "priority": "medium",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "워크플로 구성 설계 및 환경 설정",
+          "description": "자동화 규칙 기반 워크플로 구조를 초보자 수준에서 구성",
+          "dependencies": [],
+          "details": "트리거 조건/분기 로직 시각화 도구 활용, 사용자 역할별 권한 설정, 오류 발생 시 폴백 경로 정의",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "알림 시스템 연동 구현",
+          "description": "다중 채널(이메일/Slack/문자) 알림 통합 및 우선순위 설정",
+          "dependencies": [
+            1
+          ],
+          "details": "REST API를 통한 알림 서비스 연결, 중요도별 에스컬레이션 규칙 구성, 메시지 템플릿 관리",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "웹훅 엔드포인트 보안 설정",
+          "description": "외부 서비스와의 데이터 동기화를 위한 안전한 통신 채널 구축",
+          "dependencies": [
+            1,
+            2
+          ],
+          "details": "HMAC 서명 검증 구현, payload 암호화 설정, 재시도 메커니즘 포함한 오류 큐 관리",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "엔드투엔드 시나리오 검증",
+          "description": "전체 워크플로 장애 포인트 식별을 위한 통합 테스트",
+          "dependencies": [
+            1,
+            2,
+            3
+          ],
+          "details": "Mock 서버를 이용한 실패 케이스 시뮬레이션, 로그 추적 시스템 연동, 성능 병목 현상 분석",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "서비스 소개 페이지 모바일 반응형 최적화",
+      "description": "서비스 소개 페이지의 모든 주요 섹션에 모바일 반응형 UI/UX를 적용하여 다양한 기기에서 최적의 사용성을 제공한다.",
+      "details": "- 메인, 챗봇, 도입문의 등 모든 주요 섹션에 미디어 쿼리 및 반응형 CSS 적용\n- 모바일, 태블릿, 데스크탑에서 UI가 깨지지 않도록 레이아웃 설계\n- 터치 인터페이스에 맞는 버튼/입력창 크기 적용\n- MUI, Tailwind 등 프레임워크의 반응형 속성 활용\n- Lighthouse 등 도구로 반응형 테스트 및 개선",
+      "testStrategy": "스마트폰, 태블릿, 데스크탑 등 다양한 기기에서 실제로 페이지를 열어 UI가 깨지지 않는지 확인하고, Lighthouse 등 자동화 도구로 반응형 점수를 측정한다.",
+      "status": "in-progress",
+      "dependencies": [],
+      "priority": "high",
+      "subtasks": []
+    },
+    {
+      "id": 9,
+      "title": "Implement AI Benefit Care+ Integrated UI Based on SVG Wireframes",
+      "description": "Develop the AI Benefit Care+ integrated interface by transforming SVG wireframes into functional screens with Apple-style premium/minimal UI, including main dashboard, profile settings, card/membership registration, benefit category search, and AI chatbot.",
+      "details": "This task involves implementing the comprehensive UI/UX for the AI Benefit Care+ platform based on provided Figma designs and SVG wireframes. The implementation should include:\n\n1. Main Dashboard:\n   - Create a clean, premium dashboard displaying user benefits overview\n   - Implement data visualization components for benefit usage statistics\n   - Design notification system for new/upcoming benefits\n\n2. Profile Settings:\n   - Develop user profile management screens with editable fields\n   - Implement profile image upload/management functionality\n   - Create preference settings for personalized benefit recommendations\n\n3. Card/Membership Registration:\n   - Build card scanning and manual entry interfaces\n   - Implement secure storage for payment/membership information\n   - Create card management UI with add/edit/delete functionality\n\n4. Benefit Category Search:\n   - Develop category-based navigation system\n   - Implement search functionality with filters and sorting options\n   - Create benefit detail views with expandable information\n\n5. AI Chatbot Interface:\n   - Implement chat UI with message history\n   - Design input methods for text and voice interactions\n   - Create response templates for different chatbot functions\n\nTechnical Requirements:\n- Use TailwindCSS for styling to match the Apple-style premium/minimal aesthetic\n- Ensure responsive design across all device sizes\n- Implement component-based architecture for maintainability\n- Design data structures that support all required functionality\n- Use actual content, icons, and images as specified in the design files\n- Implement all interactive elements with appropriate animations and feedback\n- Ensure 1:1 matching with Figma designs and SVG wireframes\n\nThe implementation should prioritize both visual fidelity and functional completeness, ensuring that all screens not only look identical to the designs but also provide the intended user experience.",
+      "testStrategy": "Testing for this implementation will be comprehensive and multi-faceted:\n\n1. Visual Comparison Testing:\n   - Conduct side-by-side comparisons between implemented screens and original Figma/SVG designs\n   - Use visual regression testing tools to identify any pixel-level discrepancies\n   - Verify that all colors, typography, spacing, and visual elements match the design specifications\n\n2. Responsive Design Testing:\n   - Test all screens across multiple device sizes (mobile, tablet, desktop)\n   - Verify that layouts adapt appropriately at standard breakpoints\n   - Ensure no content overflow or unintended scrolling occurs\n\n3. Component Testing:\n   - Verify each UI component functions as expected in isolation\n   - Test component props and state management\n   - Ensure components maintain visual consistency across different contexts\n\n4. Interaction Testing:\n   - Test all interactive elements (buttons, forms, dropdowns, etc.)\n   - Verify animations and transitions match design specifications\n   - Ensure appropriate loading states and feedback are implemented\n\n5. Integration Testing:\n   - Test navigation flows between different screens\n   - Verify data persistence across screen transitions\n   - Ensure chatbot interactions work seamlessly with the rest of the interface\n\n6. Accessibility Testing:\n   - Verify color contrast meets WCAG standards\n   - Test keyboard navigation throughout the interface\n   - Ensure screen readers can properly interpret all content\n\n7. Performance Testing:\n   - Measure load times for each screen\n   - Test performance with various network conditions\n   - Ensure smooth animations and transitions even on lower-end devices\n\n8. Cross-browser Testing:\n   - Verify consistent appearance and functionality across major browsers\n   - Test on both desktop and mobile browsers\n\n9. User Acceptance Testing:\n   - Conduct sessions with stakeholders to verify the implementation meets expectations\n   - Compare user flows with original design intentions\n\nDocumentation of any deviations from the original design (if necessary for technical reasons) should be provided along with justification.",
+      "status": "pending",
+      "dependencies": [],
+      "priority": "medium",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Implement Main Dashboard UI Components",
+          "description": "Develop the main dashboard screen with premium Apple-style UI components including benefits overview, data visualization for usage statistics, and notification system.",
+          "dependencies": [],
+          "details": "Create React components for the dashboard layout using TailwindCSS for styling. Implement data visualization charts using a library like Chart.js or D3.js for benefit usage statistics. Build notification components with unread indicators and expandable details. Ensure responsive design across all device sizes by implementing appropriate Tailwind breakpoints. Use grid and flex layouts to match the SVG wireframes exactly. Implement skeleton loading states for data-dependent components.",
+          "status": "pending",
+          "testStrategy": "Create component tests for each UI element. Test responsive behavior across multiple device sizes. Verify visual fidelity against Figma designs using screenshot comparison tools."
+        },
+        {
+          "id": 2,
+          "title": "Build Profile Settings and Management Screens",
+          "description": "Develop user profile management screens with editable fields, profile image upload functionality, and preference settings for personalized benefit recommendations.",
+          "dependencies": [],
+          "details": "Create form components for profile editing with proper validation. Implement image upload with preview, cropping functionality, and storage integration. Build toggle/checkbox components for preference settings. Use form state management (Formik or React Hook Form) for handling user inputs. Implement responsive layouts that adapt to different screen sizes. Add appropriate animations for state changes and interactions using CSS transitions or Framer Motion.",
+          "status": "pending",
+          "testStrategy": "Test form validation for all input fields. Verify image upload functionality with various file types and sizes. Ensure all preference toggles correctly update user settings."
+        },
+        {
+          "id": 3,
+          "title": "Develop Card/Membership Registration Interface",
+          "description": "Build the card scanning and manual entry interfaces, implement secure storage for payment/membership information, and create card management UI with add/edit/delete functionality.",
+          "dependencies": [
+            2
+          ],
+          "details": "Implement card scanning using device camera with appropriate permissions handling. Create manual entry forms with proper validation for card details. Design secure storage approach for sensitive information (consider using encrypted local storage or secure API endpoints). Build card management interface with swipeable/selectable cards that can be edited or deleted. Add animations for card flipping, selection, and deletion. Ensure all components match the SVG wireframes exactly in terms of styling and layout.",
+          "status": "pending",
+          "testStrategy": "Test card scanning with various card types. Verify validation rules for manual entry. Test CRUD operations for card management. Ensure secure handling of sensitive information."
+        },
+        {
+          "id": 4,
+          "title": "Create Benefit Category Search and Navigation System",
+          "description": "Develop a category-based navigation system, implement search functionality with filters and sorting options, and create benefit detail views with expandable information.",
+          "dependencies": [
+            1
+          ],
+          "details": "Build category navigation components with horizontal scrolling for mobile and grid layout for desktop. Implement search functionality with debounced input and highlighted results. Create filter components with dropdowns/modals for advanced filtering. Design benefit cards with expandable details using animations for smooth transitions. Implement infinite scrolling or pagination for search results. Ensure all interactive elements have appropriate hover/active states and animations. Match the premium minimal aesthetic from the Figma designs.",
+          "status": "pending",
+          "testStrategy": "Test search functionality with various queries. Verify filter and sort operations work correctly. Test expandable details on different device sizes. Ensure smooth scrolling and pagination behavior."
+        },
+        {
+          "id": 5,
+          "title": "Implement AI Chatbot Interface and Integration",
+          "description": "Develop the chat UI with message history, design input methods for text and voice interactions, and create response templates for different chatbot functions.",
+          "dependencies": [
+            1,
+            4
+          ],
+          "details": "Build a chat interface with message bubbles, typing indicators, and timestamp displays. Implement text input with autocomplete suggestions. Create voice input functionality with recording indicator and transcription display. Design response templates for different types of chatbot interactions (questions, benefit recommendations, support requests). Implement smooth scrolling behavior for chat history. Add animations for message sending/receiving. Ensure the chat interface is accessible and works across all device sizes. Match the Apple-style premium aesthetic from the Figma designs.",
+          "status": "pending",
+          "testStrategy": "Test chat functionality with various message types. Verify voice input works across different browsers. Test scrolling behavior with large message histories. Ensure all animations perform well on lower-end devices."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Task #10: Develop Task Management System for AI Benefit Care+ Project Lifecycle",
+      "description": "Create a comprehensive task management system to track and organize all UI/UX components, data structures, interactions, and development phases of the AI Benefit Care+ integrated interface project.",
+      "details": "The task management system should:\n\n1. Break down the AI Benefit Care+ project into granular subtasks organized by screen/feature:\n   - Main Dashboard components and interactions\n   - Profile Settings page functionality\n   - Card/Membership registration flows\n   - Benefit Category search implementation\n   - AI Chatbot integration and conversation flows\n\n2. For each subtask, track:\n   - UI/UX elements from Figma designs (ensuring 1:1 matching)\n   - Data structures and API requirements\n   - TailwindCSS implementation details\n   - SVG asset integration\n   - Apple-style component specifications\n   - Responsive design requirements\n   - Interactive elements and state management\n\n3. Implement a task lifecycle management approach that covers:\n   - Design review and approval process\n   - Development status tracking\n   - Testing procedures and acceptance criteria\n   - Deployment preparation and execution\n   - Post-deployment monitoring\n\n4. Create a visual dashboard that provides:\n   - Overall project progress visualization\n   - Critical path identification\n   - Resource allocation tracking\n   - Deadline management\n   - Dependency mapping between tasks\n\n5. Establish integration with existing development tools:\n   - Version control system hooks\n   - Figma design change notifications\n   - Automated testing result integration\n   - Deployment status updates\n\nThe system should support both Korean and English interfaces to accommodate all team members and maintain consistent terminology across design and development documentation.",
+      "testStrategy": "Testing the task management system will involve:\n\n1. Functional Testing:\n   - Verify all screens and features of the AI Benefit Care+ project are properly represented as tasks\n   - Confirm subtask creation, editing, and status updates work correctly\n   - Test task assignment and reassignment functionality\n   - Validate notification system for task updates and deadlines\n   - Ensure proper tracking of dependencies between tasks\n\n2. Integration Testing:\n   - Test integration with version control systems\n   - Verify Figma design change notifications are received and processed\n   - Confirm automated test results are properly linked to relevant tasks\n   - Validate deployment status updates are reflected accurately\n\n3. User Acceptance Testing:\n   - Have project managers verify the system meets their workflow needs\n   - Confirm designers can easily track implementation status of their designs\n   - Ensure developers can efficiently update task status and access requirements\n   - Validate QA team can link test results to specific tasks\n\n4. Performance Testing:\n   - Test system performance with the full project task load\n   - Verify dashboard visualization performance with complete dataset\n   - Measure response times for common operations\n\n5. Usability Testing:\n   - Evaluate the intuitiveness of the task creation and management interface\n   - Test the effectiveness of progress visualization tools\n   - Assess the clarity of deadline and dependency representations\n\n6. Acceptance Criteria:\n   - All AI Benefit Care+ project components are represented as trackable tasks\n   - Full project lifecycle from design to deployment is managed within the system\n   - Team members can efficiently update and track task status\n   - Project managers can generate accurate progress reports\n   - System successfully integrates with existing development tools",
+      "status": "pending",
+      "dependencies": [],
+      "priority": "medium",
+      "subtasks": []
+    }
+  ]
+}
