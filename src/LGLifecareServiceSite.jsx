@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle, Users, Gift, Star, Settings, Heart } from 'lucide-react';
 import ContactModal from './components/ContactModal';
 import AuthModal from './components/AuthModal';
+import { Link } from 'react-router-dom'; // 페이지 이동을 위한 Link 컴포넌트 import
 // import ProductList from './components/ProductList'; // 상품 리스트 컴포넌트
 // import ReviewList from './components/ReviewList'; // 고객 리뷰 리스트 컴포넌트 import
 // Apple 스타일 헤더 컴포넌트 import
@@ -28,6 +29,12 @@ const LGLifecareServiceSite = () => {
       <Header />
       <main className="flex-1 flex flex-col">
         <HeroSection />
+        {/* AX Innovation 상세페이지 이동 버튼 */}
+        <div className="flex justify-center my-8">
+          <Link to="/ax-innovation" className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold text-lg shadow hover:bg-blue-800 transition">
+            AX Innovation 상세 보기
+          </Link>
+        </div>
         <FeatureSection />
         <EnterpriseSection />
         <BenefitSection />
