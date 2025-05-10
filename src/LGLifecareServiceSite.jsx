@@ -21,20 +21,19 @@ import CommerceSection from './components/CommerceSection';
 import TestimonialSection from './components/TestimonialSection';
 // Apple 스타일 푸터 import
 import Footer from './components/Footer';
+import QuickAccessTab from './components/QuickAccessTab'; // 하단 퀵탭 컴포넌트 import
 
-// Apple 스타일 메인페이지 컴포넌트
+// LifeCare 공식 홈페이지 메인페이지 컴포넌트 (기획안 반영)
 const LGLifecareServiceSite = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="flex-1 flex flex-col">
+        {/* Hero + 검색 + CTA */}
         <HeroSection />
-        {/* AX Innovation 상세페이지 이동 버튼 */}
-        <div className="flex justify-center my-8">
-          <Link to="/ax-innovation" className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold text-lg shadow hover:bg-blue-800 transition">
-            AX Innovation 상세 보기
-          </Link>
-        </div>
+        {/* 하단 퀵탭 */}
+        <QuickAccessTab />
+        {/* 주요 섹션 */}
         <FeatureSection />
         <EnterpriseSection />
         <BenefitSection />
