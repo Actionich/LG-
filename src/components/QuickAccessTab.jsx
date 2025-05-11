@@ -1,6 +1,6 @@
 // LifeCare 공식 홈페이지 하단 퀵탭(QuickAccessTab) 컴포넌트
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const tabs = [
   { label: 'LifeCare 소개', to: '/lifecare' },
@@ -12,18 +12,22 @@ const tabs = [
   { label: '도입문의', to: '/contact/lifecareframe' },
 ];
 
-const QuickAccessTab = () => (
-  <nav className="sticky bottom-0 z-20 w-full bg-white border-t border-blue-100 shadow flex flex-wrap justify-center gap-2 py-3 px-2 md:px-0">
-    {tabs.map(tab => (
-      <Link
-        key={tab.to}
-        to={tab.to}
-        className="px-4 py-2 rounded-full text-sm md:text-base font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition"
-      >
-        {tab.label}
-      </Link>
-    ))}
-  </nav>
-);
-
-export default QuickAccessTab; 
+// 회사 검색/바로가기 섹션
+export default function QuickAccessTab() {
+  return (
+    <section className="py-10 text-center bg-white">
+      <h2 className="text-xl font-semibold mb-2">우리 회사 복지몰 찾기</h2>
+      <input
+        type="text"
+        placeholder="회사명을 입력하세요 (예: LG전자)"
+        className="border px-3 py-2 rounded mb-2"
+      />
+      <div>
+        <button className="bg-blue-700 text-white px-4 py-2 rounded mt-2">복지몰 바로가기</button>
+      </div>
+      <p className="text-sm text-gray-500 mt-2">
+        검색 결과에 따라 자동 연결 또는 안내 제공
+      </p>
+    </section>
+  );
+} 

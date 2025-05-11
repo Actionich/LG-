@@ -1,6 +1,9 @@
-// AX 기반 주요기능 안내 컴포넌트(더미)
+// AX 특징 섹션 컴포넌트
 import React from 'react';
+
+// AX(접근성) 강화 기능 섹션
 const AXFeatureSection = () => (
-  <section className="py-12 text-center text-gray-400 border-b">[AX 기반 주요기능 안내 섹션]</section>
+  <></>
 );
+
 export default AXFeatureSection; 

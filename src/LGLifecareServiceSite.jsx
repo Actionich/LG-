@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import Header from './components/Header';
-import HeroSection from './components/HeroSection';
+import HeroSection from './components/Hero';
 import QuickAccessTab from './components/QuickAccessTab';
 import ServiceCompareTable from './components/ServiceCompareTable';
 import LifeCareIntro from './components/LifeCareIntro';
@@ -12,39 +12,46 @@ import MobileUXSection from './components/MobileUXSection';
 import ResourceCenter from './components/ResourceCenter';
 import SimulatorSection from './components/SimulatorSection';
 import Footer from './components/Footer';
+import { ArrowUp } from 'lucide-react';
 
-// LifeCare 공식 홈페이지 메인페이지 컴포넌트 (기획안 전체 반영)
+// LG 라이프케어 서비스 메인 페이지 전체를 렌더링하는 컴포넌트입니다.
 const LGLifecareServiceSite = () => {
+  // 최상단 이동 함수
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div>
       <Header />
-      <main className="flex-1 flex flex-col">
-        {/* Hero + 검색 + CTA */}
+      <main>
+        {/* <section id="intro">
+          <h1>LG LifeCare 복지몰</h1>
+          <p>모든 순간이 행복한 선택, 일상이 복지가 되다.</p>
+        </section> */}
         <HeroSection />
-        {/* 하단 퀵탭 */}
-        <QuickAccessTab />
-        {/* 서비스 비교표 */}
-        <ServiceCompareTable />
-        {/* LifeCare 서비스 소개 */}
+        {/* <QuickAccessTab /> */}
+        {/* <ServiceCompareTable /> */}
         <LifeCareIntro />
-        {/* LifeCareFrame 서비스 소개 */}
         <LifeCareFrameIntro />
-        {/* AX 기반 주요기능 안내 */}
-        <AXFeatureSection />
-        {/* 도입기업 후기 */}
+      
         <TestimonialSection />
-        {/* 도입문의(상담/탭 분리) */}
         <ContactSection />
-        {/* 모바일 UX/앱 안내 */}
         <MobileUXSection />
-        {/* 리소스 센터 */}
         <ResourceCenter />
-        {/* 시뮬레이터 */}
         <SimulatorSection />
       </main>
       <Footer />
+      {/* 최상단 이동 플로팅 버튼 */}
+      <button
+        onClick={handleScrollTop}
+        aria-label="최상단으로 이동"
+        className="fixed bottom-8 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg p-4 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
+        style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.12)' }}
+      >
+        <ArrowUp size={24} />
+      </button>
     </div>
   );
 };
 
-export default LGLifecareServiceSite; 
+export default LGLifecareServiceSite;
