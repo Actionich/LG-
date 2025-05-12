@@ -7,4 +7,5 @@ const Section = ({ children }: { children: any }) => {
 
 export default Section;
 
+// TypeScript isolatedModules 오류 방지용
 export {};
