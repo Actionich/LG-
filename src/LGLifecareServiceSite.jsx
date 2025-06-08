@@ -31,7 +31,7 @@ const LGLifecareServiceSite = () => {
           <p>모든 순간이 행복한 선택, 일상이 복지가 되다.</p>
         </section> */}
         <HeroSection />
-        {/* <QuickAccessTab /> */}
+        <QuickAccessTab />
         {/* <ServiceCompareTable /> */}
         <LifeCareIntro />
         <LifeCareFrameIntro />
