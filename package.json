@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "LG 라이프케어 React 서비스",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "npx next dev",
+    "build": "npx next build",
+    "start": "npx next start"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

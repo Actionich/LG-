@@ -15,19 +15,23 @@ const tabs = [
 // 회사 검색/바로가기 섹션
 export default function QuickAccessTab() {
   return (
-    <section className="py-10 text-center bg-white">
-      <h2 className="text-xl font-semibold mb-2">우리 회사 복지몰 찾기</h2>
-      <input
-        type="text"
-        placeholder="회사명을 입력하세요 (예: LG전자)"
-        className="border px-3 py-2 rounded mb-2"
-      />
-      <div>
-        <button className="bg-blue-700 text-white px-4 py-2 rounded mt-2">복지몰 바로가기</button>
+    <section className="py-12 bg-blue-50 text-center shadow-inner">
+      <h2 className="text-2xl font-bold text-blue-700 mb-4">우리 회사 복지몰 찾기</h2>
+      <div className="flex justify-center max-w-md mx-auto gap-2">
+        <input
+          type="text"
+          placeholder="회사명을 입력하세요 (예: LG전자)"
+          className="flex-1 border border-blue-200 px-4 py-3 rounded-l-full focus:outline-none"
+        />
+        <button
+          className="px-6 py-3 rounded-r-full bg-blue-700 text-white font-semibold hover:bg-blue-800 transition"
+        >
+          복지몰 바로가기
+        </button>
       </div>
-      <p className="text-sm text-gray-500 mt-2">
-        검색 결과에 따라 자동 연결 또는 안내 제공
+      <p className="text-sm text-gray-600 mt-2">
+        검색 결과에 따라 자동 연결 또는 안내 제공됩니다
       </p>
     </section>
   );
-} 
+}
